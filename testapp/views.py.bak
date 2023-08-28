@@ -1,0 +1,28 @@
+from django.http import HttpResponse
+from django.views.generic import ListView, DetailView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.urls import reverse_lazy
+from django.views.generic.edit import FormMixin
+from testapp.models import Book
+from testapp.forms import PromiseForm
+
+class BookList(ListView):
+    model = Book
+    
+
+class BookView(DetailView):
+    model = Book
+
+class BookCreate(CreateView):
+    model = Book
+    form_class = PromiseForm
+    success_url = reverse_lazy('book_list')
+
+class BookUpdate(UpdateView):
+    model = Book
+    fields = ['name', 'password','emailid','department','doj']
+    success_url = reverse_lazy('book_list')
+
+class BookDelete(DeleteView):
+    model = Book
+    success_url = reverse_lazy('book_list')

@@ -1,0 +1,31 @@
+<h1>Dashbord and Employee listing Page</h1>
+<h2> Employee listing </h2>
+<button type="button" ><a href="{% url "book_new" %}">Add New</a></button>
+<table border="1">
+<thead>
+    <tr>
+    <th>Actions</th>
+    <th>User ID</th>
+    <th>Password</th>
+    <th>Email ID</th>
+    <th>Department</th>
+	<th>Date of joining</th>
+    </tr>
+</thead>
+<tbody>
+    {% for book in object_list %}
+    <tr>
+	
+    <td><button type="button" ><a href="{% url "book_edit" book.id %}">edit</a></button><button type="button" ><a href="{% url "book_delete" book.id %}">delete</a></button></td>
+    
+    <td>{{ book.name }}</td>
+    <td>{{ book.password }}</td>
+    <td>{{ book.emailid }}</td>
+	<td>{{ book.department }}</td>
+	<td>{{ book.doj }}</td>
+    </tr>
+    {% endfor %}
+</tbody>
+</table>
+<br>
+
